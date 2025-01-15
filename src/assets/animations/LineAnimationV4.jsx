@@ -11,9 +11,9 @@ const LineAnimation = () => {
   const resizeCanvas = () => {
     const canvas = canvasRef.current;
     canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    canvas.height = window.innerHeight ;
     // Reset the initial position of branches
-    branchesRef.current = [{ x: 0, y: canvas.height / 2, dx: 5, dy: 0 }];
+    branchesRef.current = [{ x: 0, y: canvas.height/2, dx: 5, dy: 0 }];
   };
 
   const drawLine = () => {

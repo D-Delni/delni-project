@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.word {
+    display: inline-block;
+    position: relative;
+  }
+  
+  .char {
+    display: inline-block;
+    transition: color 0.3s ease, transform 0.3s ease;
+    color: #505050; /* Default color */
+  }
+  
+  .char:hover {
+    color: #DDA95A; /* Highlight color on hover */
+    transform: scale(1.25); /* Optional zoom */
+  }

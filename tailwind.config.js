@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      transform: {
+        "rotate-y-30": "rotateY(30deg)",
+      },
+    },
   },
   plugins: [],
 }

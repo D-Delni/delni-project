@@ -17,15 +17,15 @@ const Main = () => {
       
   
       <div className='w-full h-screen absolute top-0 left-0 bg-white/40' >
-          <div className='max-w-[700] m-auto h-full w-full flex flex-col justify-center items-center '>
-            <h1 className=' sm:text-6xl text-4xl font-bold text-gray-800'> D.D.D </h1>
-            <h3 className=' flex sm: text-2xl pt-4 text-gray-800'> 
+          <div className='max-w-[600] m-auto h-full w-full pl-20 flex flex-col justify-center items-start '>
+            <h1 className=' sm:text-6xl text-4xl font-bold text-gray-800'> Dani D. Delgado </h1>
+            <h3 className=' flex sm: text-2xl pt-5 text-gray-800'> 
             <TypeAnimation
               sequence={[
                 // Same substring at the start will only be typed out once, initially
-                'Are we in the same narrative?',
+                'I`m a Game Developer',
                 1500, // wait 1s before replacing "Mice" with "Hamsters"
-                'Do you want to be part of it?',
+                'With too many hobbies',
                 1400,
               ]}
               wrapper="span"
@@ -35,7 +35,7 @@ const Main = () => {
             />
 
             </h3>
-            <div className='flex justify-between pt-6 max-w-[200px] w-full'>
+            <div className='flex  justify-between flex-row pt-6 max-w-[200px] w-full items-center'>
               <FaLinkedinIn size={20} className='cursor-pointer'/>
               <FaGithub size={20} className='cursor-pointer'/>
               <FaInstagram size={20} className='cursor-pointer' /></div>

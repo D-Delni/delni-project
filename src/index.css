@@ -17,3 +17,9 @@
     color: #DDA95A; /* Highlight color on hover */
     transform: scale(1.25); /* Optional zoom */
   }
+
+
+
+html,body{
+  overflow-x: hidden;
+}

@@ -1,8 +1,34 @@
-# React + Vite
+<h1 align="left">PORTFOLIO PROJECT</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+###
 
-Currently, two official plugins are available:
+<p align="left">This is a portfolio page for networking, showing my work to the people, and share ideas</p>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+###
+
+<h2 align="left">About me</h2>
+
+###
+
+<p align="left">✨ Constantly Creating<br>📚 Looking for new horizons<br>🎯 Having impact<br>🎲 Trying not to perish doing the things above :)</p>
+
+###
+
+<h2 align="left">I code with</h2>
+
+###
+
+<div align="left">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="40"   />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" height="40"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height="40"   />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" height="40"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-plain.svg" height="40"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/blender/blender-original.svg" height="40"/>
+                 
+          
+</div>
+
+###

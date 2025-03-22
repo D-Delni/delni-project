@@ -11,15 +11,21 @@ const LineAnimation = () => {
     const canvas = canvasRef.current
     canvas.width = window.innerWidth
     canvas.height = window.innerHeight
-    // Reset the initial position of branches
-    branchesRef.current = [{ x: 0, y: canvas.height / 2, dx: 5, dy: 0 }]
+
+    // Adjust the initial position of branches to be in the center of the canvas
+    branchesRef.current = [{
+      x: canvas.width * 0.01,  // Starting from 10% of the width
+      y: canvas.height / 2,   // Vertical center
+      dx: 5,                  // Movement speed horizontally
+      dy: 0                   // No initial vertical movement
+    }]
   }
 
   const drawLine = () => {
     const canvas = canvasRef.current
     const ctx = canvas.getContext("2d")
     ctx.clearRect(0, 0, canvas.width, canvas.height)
-    ctx.strokeStyle = "#DDA95A" // Line color: Yeelow; Green 68ff68 -> #121212 fondo
+    ctx.strokeStyle = "#DDA95A" // Line color: Yellow; Green 68ff68 -> #121212 fondo
     ctx.lineWidth = 3
 
     branchesRef.current.forEach((branch) => {
@@ -85,7 +91,14 @@ const LineAnimation = () => {
 
     const handleResize = () => {
       resizeCanvas()
-      branchesRef.current = [{ x: 0, y: canvas.height / 2, dx: 2, dy: 0 }]
+
+      // Adjust initial branches position and speed based on new size
+      branchesRef.current = [{
+        x: canvas.width * 0.1,  // Adjust initial X position proportionally
+        y: canvas.height / 2,   // Vertical center
+        dx: 5 * (canvas.width / window.innerWidth), // Adjust horizontal speed proportionally
+        dy: 0 // Vertical speed remains unchanged
+      }]
       isAnimating.current = true
       drawLine()
     }
@@ -104,8 +117,7 @@ const LineAnimation = () => {
     }
   }, [drawLine, resizeCanvas]) // Added dependencies to useEffect
 
-  return <canvas ref={canvasRef} style={{ background: "#EFF0F0", display: "block" }} />
+  return <canvas ref={canvasRef} style={{display: "block" ,zIndex: -1, }} />
 }
 
 export default LineAnimation
-

@@ -15,6 +15,7 @@ export default {
             'default': "#DDA95A",
             'light-dark': "#602D15",
             'dark': "#764928",
+            'inverted': "#1F2937",
           }
         }
       }

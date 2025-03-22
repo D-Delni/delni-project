@@ -2,20 +2,15 @@ import React from 'react'
 import background from '/src/assets/images/background.png';
 import { TypeAnimation } from 'react-type-animation';
 import { FaTwitter, FaInstagram, FaGithub, FaLinkedinIn } from 'react-icons/fa';
+import ParticlesBackground from '../assets/animations/ParticlesBackground';
 import LineAnimationV4 from '../assets/animations/LineAnimationV4';
-
 
 const Main = () => {
   return (
-    <div id='main'>
-      {/* <img className="w-full h-screen object-cover object-left flip-left scale-x-[1]" 
-      src={background}
+      <div id="home" className='absolute top-0 left-0 w-full h-full z-0'>
+        {/* Background Animations */}
+        <LineAnimationV4 />
 
-      alt="/" />  */}
-
-      <LineAnimationV4 className="absolute object-cover top-0 left-0 w-full h-full z-[-1]"/>
-      
-  
       <div className='w-full h-screen absolute top-0 left-0 bg-white/40' >
           <div className='max-w-[600] m-auto h-full w-full pl-20 flex flex-col justify-center items-start '>
             <h1 className=' sm:text-6xl text-4xl font-bold text-gray-800'> Dani D. Delgado </h1>
@@ -39,9 +34,10 @@ const Main = () => {
               <FaLinkedinIn size={20} className='cursor-pointer'/>
               <FaGithub size={20} className='cursor-pointer'/>
               <FaInstagram size={20} className='cursor-pointer' /></div>
-          </div>
-        </div>
+            </div>
       </div>
+
+    </div>
   )
 }
 

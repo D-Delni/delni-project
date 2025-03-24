@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { AiOutlineMenu, AiOutlineClose, AiOutlineHome, AiOutlinePlaySquare } from "react-icons/ai";
 import { IoMailUnreadOutline } from "react-icons/io5";
+import { blockScroll , restoreScroll} from "../assets/helper-functions/scrollUtils";
 import ParticlesBackground from "../assets/animations/ParticlesBackground";
 import LineAnimationV4 from "../assets/animations/LineAnimationV4";
+
 
 const Sidenav = () => {
   const [nav, setNav] = useState(false);
@@ -10,12 +12,16 @@ const Sidenav = () => {
   // Effect to disable/enable scroll when the sidenav is open/closed
   useEffect(() => {
     if (nav) {
-      document.body.style.overflow = "hidden"; // Disable scroll
+      blockScroll(); // Block scroll when sidenav is open
     } else {
-      document.body.style.overflow = "auto"; // Enable scroll
+      restoreScroll(); // Restore scroll when sidenav is closed
     }
 
-  });
+    // Cleanup function to reset overflow styles when component unmounts or nav changes
+    return () => {
+      restoreScroll();
+    };
+  }, [nav]);
 
   // Function to close the sidenav when clicking inside it
   const handleSidebarClick = (e) => {
@@ -26,7 +32,6 @@ const Sidenav = () => {
 
   return (
     <div className="relative min-h-screen flex items-center justify-center text-black">
-
       {/* Sidenav (Full screen width when opened) */}
       <div
         className={`fixed top-0 left-0 h-full bg-custom-orange-default z-50 p-10 flex flex-col justify-start items-start transition-transform duration-300 ${

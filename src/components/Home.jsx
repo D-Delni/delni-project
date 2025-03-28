@@ -4,6 +4,8 @@ import { FaTwitter, FaInstagram, FaGithub, FaLinkedinIn } from 'react-icons/fa';
 import ParticlesBackground from '../assets/animations/ParticlesBackground';
 import LineAnimationV4 from '../assets/animations/LineAnimationV4';
 
+
+
 const Home = () => {
   return (
       <div id="home" className='absolute top-0 left-0 w-full h-full z-0'>
@@ -35,7 +37,6 @@ const Home = () => {
               <FaInstagram size={20} className='cursor-pointer' /></div>
             </div>
       </div>
-
     </div>
   )
 }

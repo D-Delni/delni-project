@@ -9,6 +9,7 @@ import Projects from './components/Projects'
 import WorldMap from './components/WorldMap'
 import { useEffect } from 'react'
 import { blockScrollX } from './assets/helper-functions/scrollUtils'
+import Dividerbutton from './sections/DividerButton'
 
 function App() {
   useEffect(()=>{
@@ -19,6 +20,7 @@ function App() {
 
         <Sidenav/>
         <Home/>
+        <Dividerbutton></Dividerbutton> {/*Esto creo que va a ser mejor meterlo individualmente en cada section, con backround trasnparent*/}
         <WorldMap/>
         <Projects/>
     </div>

@@ -1,5 +1,7 @@
 import { useEffect, useRef } from "react"
 
+//Principal animation!!!!
+
 const LineAnimation = () => {
   const canvasRef = useRef(null)
   const animationRef = useRef(null)
@@ -76,6 +78,7 @@ const LineAnimation = () => {
         })
       }
     })
+    
 
     // Continue animation if lines aren't off screen
     if (branchesRef.current.some((b) => b.x < canvas.width)) {
@@ -84,6 +87,8 @@ const LineAnimation = () => {
       isAnimating.current = false // Stop animation if all branches are off screen
     }
   }
+
+
 
   useEffect(() => {
     const canvas = canvasRef.current

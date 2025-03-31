@@ -3,112 +3,70 @@ import { useEffect, useRef } from "react";
 const LineAnimation = () => {
   const canvasRef = useRef(null);
   const animationRef = useRef(null);
-  const branchesRef = useRef([{ x: 0, y: 0, dx: 5, dy: 0 }]);
+  const branchesRef = useRef([{ x: 0, y: 0, dx: 0, dy: 5 }]);
   const isAnimating = useRef(false);
-  const delayBeforeStart = 1000; // Delay in milliseconds before the first spread starts
-
+  const delayBeforeStart = 1700; // Delay in milliseconds before the first spread starts
 
   const resizeCanvas = () => {
     const canvas = canvasRef.current;
+    if (!canvas) return;
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     // Reset the initial position of branches
-    branchesRef.current = [{ x: 0, y: canvas.height / 2, dx: 5, dy: 0 }];
+    branchesRef.current = [{ x: canvas.width / 3, y: canvas.height / 2, dx: 0, dy: 5 }];
+    if (!isAnimating.current) {
+      setTimeout(drawLine, delayBeforeStart); // Restart animation on resize with delay
+    }
   };
 
   const drawLine = () => {
     const canvas = canvasRef.current;
+    if (!canvas) return;
     const ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.strokeStyle = "#68ff68"; // Line color
+    ctx.strokeStyle = "#DDA95A"; // Line color
     ctx.lineWidth = 3;
 
-    branchesRef.current.forEach((branch) => {
-      ctx.beginPath();
-      ctx.moveTo(branch.startX || 0, branch.startY || canvas.height / 2); // Start point
-      ctx.lineTo(branch.x, branch.y);
-      ctx.stroke();
+    let x = canvas.width / 3;
+    let y = canvas.height / 2; // Start from the top
+    const step = 5; // Step size per frame
+    const bifurcation = canvas.height * 0.9; // Bifurcate before reaching full height
 
-      // Update the position of the branch
-      branch.x += branch.dx; // Move right
-      branch.y += branch.dy; // Move vertically
+    const animate = () => {
+      if (y < canvas.height) {
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        y += step;
+        ctx.lineTo(x, y);
+        ctx.stroke();
 
-      // Random chance to create a new branch
-      if (
-        Math.random() > 0.97 && // Random chance to branch
-        branch.x - (branch.startX || 10) > 20 && // Ensure spacing
-        branchesRef.current.length < 100 // Limit the number of branches
-      ) {
-        // Randomly choose an angle between 30 and 60 degrees
-        //const angle = Math.random() * (20 - 5) + 5; // Angle in degrees
-        //const angleInRadians = (angle * Math.PI) / 180; // Convert to radians
-        //const spreadFactor = Math.tan(angleInRadians); // Calculate the vertical spread
-        
-        const lineIndex = branchesRef.current.length;
-        const isHorizontal = lineIndex % 2 === 0; //Alternate very two lines
-        const direction = Math.floor(lineIndex / 2) % 2 === 1 ? 1 :-1; //Alternate directions every two lines
 
-        //Changing dy direction if is cool
-        if (isHorizontal) {
-            branchesRef.current.push({
-                startX: branch.x, // Start position of the new branch
-                startY: branch.y,
-                x: branch.x, // New branch starts at the current position
-                y: branch.y,
-                dx: 1.5, // Move right
-                //dy: (Math.random() > 0.35 ? 1 : -1) * spreadFactor * branch.dx // Calculate dy based on the angle
-                dy: isHorizontal ? direction * 7 : 0,
-            });
-        } else {
-            branchesRef.current.push({
-                startX: branch.x, // Start position of the new branch
-                startY: branch.y,
-                x: branch.x, // New branch starts at the current position
-                y: branch.y,
-                dx: 1.5, // Move right
-                //dy: (Math.random() > 0.35 ? 1 : -1) * spreadFactor * branch.dx // Calculate dy based on the angle
-                dy:0, 
-            });
-        }
+        requestAnimationFrame(animate);
       }
-    });
+    };
 
-    // Continue animation if lines aren't off screen
-    if (branchesRef.current.some((b) => b.x < canvas.width)) {
-      animationRef.current = requestAnimationFrame(drawLine);
-    } else {
-      isAnimating.current = false; // Stop animation if all branches are off screen
-    }
+    animate();
   };
 
   useEffect(() => {
-    const canvas = canvasRef.current;
     resizeCanvas(); // Initial resize
 
     const handleResize = () => {
+      cancelAnimationFrame(animationRef.current); // Cancel current animation
       resizeCanvas();
-      cancelAnimationFrame(animationRef.current); // Cancel the current animation
-      branchesRef.current = [{ x: 0, y: canvas.height / 2, dx: 5, dy: 0 }]; // Reset the branches
-      isAnimating.current = true; // Restart the animation
-      drawLine(); // Restart drawing
     };
 
     window.addEventListener("resize", handleResize);
     isAnimating.current = true;
-
-    // Start the animation after a delay
-    const startAnimation = setTimeout(() => {
-      drawLine(); // Start the animation after the specified delay
-    }, delayBeforeStart);
+    setTimeout(drawLine, delayBeforeStart); // Start drawing after delay
 
     return () => {
-      clearTimeout(startAnimation); // Clear the timeout if the component unmounts
       cancelAnimationFrame(animationRef.current);
       window.removeEventListener("resize", handleResize);
     };
   }, []);
 
-  return <canvas ref={canvasRef} style={{ background: "#121212", display: "block" }} />;
+  return <canvas ref={canvasRef} style={{ display: "block" }} />;
 };
 
 export default LineAnimation;

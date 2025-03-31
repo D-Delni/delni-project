@@ -1,15 +1,13 @@
 
-import Sidenav from './components/Sidenav'
-import Home from './components/Home'
-import LineAnimationCascade from './assets/animations/LineAnimationCascade'
-import LineAnimationv2 from './assets/animations/LineAnimationv2'
-import LineAnimationV3 from './assets/animations/LineAnimationV3'
-import LineAnimationV4 from './assets/animations/LineAnimationV4'
-import Projects from './components/Projects'
-import WorldMap from './components/WorldMap'
 import { useEffect } from 'react'
 import { blockScrollX } from './assets/helper-functions/scrollUtils'
+import Sidenav from './components/Sidenav'
+import Home from './components/Home'
+import Projects from './components/Projects'
+import WorldMap from './components/WorldMap'
 import Dividerbutton from './sections/DividerButton'
+import LineAnimationv2 from './assets/animations/LineAnimationv2'
+
 
 function App() {
   useEffect(()=>{
@@ -19,8 +17,9 @@ function App() {
     <div>
 
         <Sidenav/>
+        
         <Home/>
-        <Dividerbutton></Dividerbutton> {/*Esto creo que va a ser mejor meterlo individualmente en cada section, con backround trasnparent*/}
+        <Dividerbutton className="scroll-smooth" targetSectionId="worldMap"></Dividerbutton> {/*Esto creo que va a ser mejor meterlo individualmente en cada section, con backround trasnparent*/}
         <WorldMap/>
         <Projects/>
     </div>

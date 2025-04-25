@@ -1,3 +1,6 @@
+import LineAnimationVertical from "../assets/animations/LineAnimationVertical";
+
+
 const Projects = () => {
   const projects = [
     { id: 1, title: "Project 1", description: "Description of project 1.", image: "https://path-to-your-image-1.webp" },
@@ -7,6 +10,7 @@ const Projects = () => {
 
   return (
     <div id="projects" className="h-screen w-full bg-gray-100 flex flex-col items-center justify-center">
+      
       <h2 className="sm:text-6xl text-4xl font-bold text-gray-800 mb-8">
         <span className="word" data-word="Choose the path">
           {"TRAJECTORY".split("").map((char, index) => (
